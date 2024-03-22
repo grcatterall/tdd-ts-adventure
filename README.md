@@ -1,9 +1,3 @@
-# App Academy Adventure
-
-Welcome to App Academy Adventure! For this project, you will add different
-item types to a text adventure using OOP principles. Use the test specs to guide
-you as you work through each task described below.
-
 ## Setup and Running the code
 
 1. Clone the project from the starter.

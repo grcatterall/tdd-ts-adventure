@@ -1,14 +1,22 @@
-const { Food } = require('./food');
+import { Room, Item } from './index';
+import * as worldData from '../data/world-data.json'
 
-class Player {
+export class Player {
+    public name?: string;
+    public currentRoom?: Room;
+    public items: Item[];
 
-    constructor(name, startingRoom) {
+    constructor(name?: string, startingRoom?: Room) {
         this.name = name;
         this.currentRoom = startingRoom;
         this.items = [];
     }
 
-    move(direction) {
+    move(direction: string) {
+
+        if (!this.currentRoom) {
+            return;
+        }
 
         const nextRoom = this.currentRoom.getRoomInDirection(direction);
 
@@ -16,7 +24,7 @@ class Player {
         if (nextRoom) {
             this.currentRoom = nextRoom;
 
-            nextRoom.printRoom(this);
+            // nextRoom.printRoom(this);
         } else {
             console.log("You cannot move in that direction");
         }
@@ -33,31 +41,27 @@ class Player {
         }
     }
 
-    takeItem(itemName) {
+    takeItem(itemName: string) {
         // Picks up an item from the current room into the player's inventory
 
         // Your code here
     }
 
-    dropItem(itemName) {
+    dropItem(itemName: string) {
         // Drops an item the player is holding into their current room
 
         // Your code here
     }
 
-    eatItem(itemName) {
+    eatItem(itemName: string) {
         // Allow the player to eat food items, but not non-food items
 
         // Your code here
     }
 
-    getItemByName(name) {
+    getItemByName(name: string) {
         // Retrieves an item from a player's inventory by item name
 
         // Your code here
     }
 }
-
-module.exports = {
-  Player,
-};
