@@ -1,7 +1,7 @@
 ## Setup and Running the code
 
 1. Clone the project from the starter.
-2. Type `node game.js` to run the project
+2. Type `npm start` to run the project
 3. Type `npm install` to install the tests
 4. Type `npm test` to run the tests
 
@@ -9,7 +9,7 @@
 
 This practice starter includes a (slightly incomplete) command line game that
 you play by interacting with prompts in the terminal. First, run the game with
-the command `node game.js`, explore the commands available, and play the game to
+the command `npm start`, explore the commands available, and play the game to
 see how it works.
 
 The commands are:
@@ -103,5 +103,5 @@ then define methods across multiple classes that refer to instances of the
 
 ## Phase 3: Bonus
 
-Add new types of enemies, items and rooms. Run the game using `node game.js` to
+Add new types of enemies, items and rooms. Run the game using `npm start` to
 see your code changes in action.
