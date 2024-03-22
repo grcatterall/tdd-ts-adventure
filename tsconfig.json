@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "declaration": true,
+    "types": [
+      "reflect-metadata",
+      "mocha",
+      "node"
+    ],
+    "forceConsistentCasingInFileNames": true,
+    "lib": [
+      "es2018"
+    ],
+    "module": "commonjs",
+    "noEmitOnError": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "pretty": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "es2018",
+    "rootDir": ".",
+    "outDir": "dist",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "src/class/*.ts",
+    "src/game.ts",
+    "test/integration/*.ts",
+    "src/data/*.json"
+  ],
+  "declarationDir": "./types",
+  "exclude": [
+    "src/**/*.test.ts",
+    "node_modules",
+    "dist"
+  ]
+}

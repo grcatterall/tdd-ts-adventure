@@ -1,11 +1,10 @@
-const readline = require('readline');
+import * as readline from 'readline';
+import * as process from 'process';
 
-const { Player } = require('./class/player');
-const { World } = require('./class/world');
+import { Player, World } from './class';
+import * as worldData from './data/world-data.json';
 
-const worldData = require('./data/world-data');
-
-let player;
+const player = new Player();
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -27,16 +26,17 @@ function printHelp() {
 
 function startGame() {
     console.clear();
-    console.log("Welcome to App Academy Adventure!\n");
+    console.log("Welcome!\n");
 
     rl.question('Please enter your name: ', (name) => {
         console.clear();
         console.log(`Hello, ${name}!\n`);
 
         // Create the world and player
-        world = new World();
+        const world = new World();
         world.loadWorld(worldData);
-        player = new Player(name, world.rooms[1]);
+        player.name = name;
+        player.currentRoom = world.rooms[1];
 
         // Show commands
         printHelp();
@@ -44,7 +44,9 @@ function startGame() {
         rl.question('\nHit RETURN to start your adventure\n', () => {
 
             console.clear();
-            player.currentRoom.printRoom();
+            if (player.currentRoom) {
+                player.currentRoom.printRoom();
+            }
 
             processCommand();
         });
@@ -66,7 +68,9 @@ function processCommand() {
             return;
 
         } else if (cmd === 'l') {
-            player.currentRoom.printRoom();
+            if (player.currentRoom) {
+                player.currentRoom.printRoom();
+            }
 
         } else if (cmd === 'i') {
             player.printInventory();
