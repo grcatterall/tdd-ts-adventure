@@ -5,7 +5,6 @@
     "allowUnusedLabels": false,
     "declaration": true,
     "types": [
-      "reflect-metadata",
       "mocha",
       "node"
     ],
@@ -29,10 +28,15 @@
     "esModuleInterop": true,
     "skipLibCheck": true
   },
+  "ts-node": {
+    // these options are overrides used only by ts-node
+    // same as the --compilerOptions flag and the TS_NODE_COMPILER_OPTIONS environment variable
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  },
   "include": [
-    "src/class/*.ts",
-    "src/game.ts",
-    "test/integration/*.ts",
+    "src/**/*.ts",
     "src/data/*.json"
   ],
   "declarationDir": "./types",
