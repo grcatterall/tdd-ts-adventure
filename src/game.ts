@@ -83,6 +83,9 @@ function processCommand() {
             let itemName = cmd.split(" ")[1];
 
             player.takeItem(itemName);
+            console.log(`Picked up ${itemName}`);
+
+            player.printInventory();
 
         } else if (cmd.startsWith("drop ")) {
             let itemName = cmd.split(" ")[1];

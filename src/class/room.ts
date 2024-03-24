@@ -22,9 +22,9 @@ export class Room {
       console.log("");
       console.log(this.description);
       console.log("");
-    //   if (this.items.length > 0) {
-    //     console.log(`Items: ${this.items.map(item => item.name).join(", ")}`);
-    //   }
+      if (this.items.length > 0) {
+        console.log(`Items: ${this.items.map(item => item.name).join(", ")}`);
+      }
       console.log(this.getExitsString());
       console.log("");
     }

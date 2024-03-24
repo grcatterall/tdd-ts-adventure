@@ -40,9 +40,17 @@ export class World {
             }
         });
 
-        // Instantiate items using data stored in the itemList variable
-            // A non-food item should be instantiated as an instance of the `Item` class
-            // A food item should be instantiated as an instance of the `Food` class
+        
+        itemList.map((item) => {
+            let newItem;
+            if (item.isFood) {
+                newItem = new Food(item.name, item.description);
+            } else {
+                newItem = new Item(item.name, item.description);
+            }
+
+            this.rooms[item.room].items.push(newItem);
+        });
 
         // Your code here
     }

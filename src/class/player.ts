@@ -24,7 +24,7 @@ export class Player {
         if (nextRoom) {
             this.currentRoom = nextRoom;
 
-            // nextRoom.printRoom(this);
+            nextRoom.printRoom();
         } else {
             console.log("You cannot move in that direction");
         }
@@ -42,26 +42,44 @@ export class Player {
     }
 
     takeItem(itemName: string) {
-        // Picks up an item from the current room into the player's inventory
+        const items = this.currentRoom?.items;
 
-        // Your code here
+        if (items) {
+            items.map((item, index) => {
+                if (item.name === itemName) {
+                    this.items.push(item);
+                    this.currentRoom?.items.splice(index, 1);
+                }
+            });
+        }
     }
 
     dropItem(itemName: string) {
-        // Drops an item the player is holding into their current room
+        const items = this.items;
 
-        // Your code here
+        if (items) {
+            items.map((item, index) => {
+                if (item.name === itemName) {
+                    this.items.splice(index, 1);
+                    this.currentRoom?.items.push(item);
+                }
+            });
+        }
     }
 
     eatItem(itemName: string) {
-        // Allow the player to eat food items, but not non-food items
+        const items = this.items;
 
-        // Your code here
+        if (items) {
+            items.map((item, index) => {
+                if (item.name === itemName && item.isFood) {
+                    this.items.splice(index, 1);
+                }
+            });
+        }
     }
 
     getItemByName(name: string) {
-        // Retrieves an item from a player's inventory by item name
-
-        // Your code here
+        return this.items.find((item: Item) => item.name === name); 
     }
 }
