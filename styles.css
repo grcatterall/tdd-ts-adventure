@@ -23,7 +23,7 @@ body {
 
 @media screen and (max-width: 600px) {
     .terminal {
-        height: 60vh; /* Set height to 60% of viewport height on smaller screens */
+        height: 50vh; /* Set height to 60% of viewport height on smaller screens */
     }
 }
 
