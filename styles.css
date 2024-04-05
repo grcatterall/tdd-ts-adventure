@@ -1,0 +1,83 @@
+/* styles.css */
+
+body {
+    background-color: #000;
+    color: #0f0;
+    font-family: monospace;
+    margin: 0;
+    padding: 0;
+}
+
+.terminal {
+    height: 90vh;
+    width: 80%;
+    margin: 50px auto;
+    border: 2px solid #0f0;
+    border-radius: 5px;
+    overflow-y: auto;
+    position: relative; /* To position the modal relative to the terminal */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 600px) {
+    .terminal {
+        height: 60vh; /* Set height to 60% of viewport height on smaller screens */
+    }
+}
+
+.terminal-output {
+    padding: 10px;
+    min-height: 200px;
+    background-color: #000;
+}
+
+.terminal-input {
+    width: calc(100% - 22px);
+    padding: 10px;
+    border: none;
+    background-color: #000;
+    color: #0f0;
+    outline: none;
+    font-family: monospace;
+}
+
+.modal {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.modal-content {
+    background-color: #222; /* Dark background */
+    color: #0f0; /* Green text */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Shadow effect */
+    max-width: 80%;
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #0f0; /* Green text */
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #fff; /* White text on hover */
+}
+
+.modal-inputs {
+    display: flex;
+    justify-content: space-between;
+}

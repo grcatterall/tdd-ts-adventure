@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal Web App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="terminal" id="terminal">
+        <div class="terminal-output" id="terminalOutput"></div>
+        <input type="text" class="terminal-input" id="terminalInput" autofocus>
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <p>Please enter your name:</p>
+                <form id="modal-name-form" class="modal-inputs" action="#">
+                    <input type="text" id="nameInput" placeholder="Your name">
+                    <button id="submitButton">OK</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="./bundle.js"></script>
+</body>
+
+</html>
