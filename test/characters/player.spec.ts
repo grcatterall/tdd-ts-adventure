@@ -1,6 +1,6 @@
 import { expect } from "chai";
 
-import { Player, Room, Item, Character } from '../src/class';
+import { Player, Room, Item, Food, Character } from '../../src/class';
 
 describe('Player', () => {
   it("player.getItemByName - Retrieves an item from a player's inventory by item name", function () {
@@ -14,8 +14,6 @@ describe('Player', () => {
     expect(player.getItemByName("rock")).to.equal(item);
 
   });
-
-
 
   it("player.takeItem - Picks up an item from the current room into the player's inventory", function () {
     const item = new Item("rock", "just a simple rock");
@@ -85,10 +83,22 @@ describe('Player', () => {
 
   });
 
+  it('Players health should increase when eating food', () => {
+    const food = new Food("sandwich", "a delicious sandwich", 5);
+    const room = new Room(1, "Test Room", "A test room");
+    const player = new Player("player", 10, 5, room);
+
+    player.items.push(food);
+
+    player.eatItem("sandwich");
+
+    expect(player.health).to.equal(15);
+  });
+
   it("player should be instance of character", () => {
     const room = new Room(2, "Test Room 2", "A second test room");
     const player = new Player("player2", 10, 5, room);
-    const character = new Character(10, 5, 'character');
+    const character = new Character('character', 10, 5);
 
 
     expect(player instanceof Character).to.be.true;
@@ -96,6 +106,5 @@ describe('Player', () => {
 
     expect(character instanceof Character).to.be.true;
     expect(character instanceof Player).to.be.false;
-
   });
 })

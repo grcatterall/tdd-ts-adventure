@@ -1,9 +1,6 @@
 import { expect } from "chai";
 
 import { Player, Room, Item, Food, World } from '../src/class';
-import * as worldData from '../src/data/world-data.json';
-
-
 
 describe ('Item', function () {
 
@@ -32,7 +29,7 @@ describe ('Item', function () {
 describe ('Food', function () {
 
   it('Food should have name and description attributes', function () {
-    const food = new Food("sandwich", "a delicious sandwich");
+    const food = new Food("sandwich", "a delicious sandwich", 5);
 
     expect(food.name).to.equal("sandwich");
     expect(food.description).to.equal("a delicious sandwich");
@@ -41,7 +38,7 @@ describe ('Food', function () {
 
 
   it('A food should be an instance of Item and Food', function () {
-    const food = new Food("sandwich", "a delicious sandwich");
+    const food = new Food("sandwich", "a delicious sandwich", 5);
     const item = new Item("rock", "just a simple rock");
 
     expect(food instanceof Item).to.be.true;
@@ -53,7 +50,7 @@ describe ('Food', function () {
 
 
   it('A food item can be eaten by a player', function () {
-    const food = new Food("sandwich", "a delicious sandwich");
+    const food = new Food("sandwich", "a delicious sandwich", 5);
     const room = new Room(1, "Test Room", "A test room");
     const player = new Player("player", 10, 5, room);
 
@@ -64,7 +61,6 @@ describe ('Food', function () {
     player.eatItem("sandwich");
 
     expect(player.items.length).to.equal(0);
-
   });
 
 

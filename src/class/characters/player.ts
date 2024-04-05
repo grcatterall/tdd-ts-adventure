@@ -1,26 +1,26 @@
-import { Room, Item } from '../index';
-import { Character } from './index';
+import { Room, Item, Food } from '../index';
+import { Character, Enemy } from './index';
 
 export class Player extends Character {
-    public currentRoom?: Room;
-    public items: Item[];
+    public currentRoom: Room;
+    public items: (Item | Food)[];
 
     constructor(
         name: string, 
         health: number,
         damage: number,
-        startingRoom?: Room
+        startingRoom: Room
     ) {
-        super(health, damage, name);
+        super(name, health, damage);
         this.name = name;
         this.currentRoom = startingRoom;
         this.items = [];
     }
 
-    move(direction: string) {
+    move(direction: string): boolean {
 
         if (!this.currentRoom) {
-            return;
+            return false;
         }
 
         const nextRoom = this.currentRoom.getRoomInDirection(direction);
@@ -29,8 +29,11 @@ export class Player extends Character {
             this.currentRoom = nextRoom;
 
             nextRoom.printRoom();
+
+            return true;
         } else {
             console.log("You cannot move in that direction");
+            return false;
         }
     }
 
@@ -71,16 +74,21 @@ export class Player extends Character {
         }
     }
 
-    eatItem(itemName: string) {
+    eatItem(itemName: string): boolean {
         const items = this.items;
+        let eaten = false;
 
         if (items) {
             items.map((item, index) => {
-                if (item.name === itemName && item.isFood) {
+                if (item.name === itemName && item instanceof Food) {
+                    this.health += item.health;
                     this.items.splice(index, 1);
+                    eaten = true;
                 }
             });
         }
+
+        return eaten;
     }
 
     getItemByName(name: string) {

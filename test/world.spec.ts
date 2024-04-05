@@ -1,6 +1,6 @@
 import { expect } from "chai";
 
-import { World } from "../src/class";
+import { World, Food } from "../src/class";
 import * as worldData from '../src/data/world-data.json';
 
 describe('World', function () {
@@ -19,6 +19,8 @@ describe('World', function () {
 
         const room = world.rooms[2];
         const roomItems = room.items;
+
+        expect(roomItems[0] instanceof Food).to.be.true;
         expect(roomItems[0].name).to.equal('sandwich')
       });
 });
