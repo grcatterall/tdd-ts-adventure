@@ -4,7 +4,6 @@ import { World } from "../src/class";
 import * as worldData from '../src/data/world-data.json';
 
 describe('World', function () {
-
       it('loadWorld - A non-food item should be instantiated as an instance of the `Item` class', function() {
         const world = new World();
         world.loadWorld(worldData);
