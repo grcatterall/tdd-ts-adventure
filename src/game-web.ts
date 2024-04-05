@@ -1,5 +1,6 @@
 import { print as UtilPrint, clear as UtilClear } from './Utils';
 import { Player, World, Room, Enemy } from './class';
+import { generateChat } from './services/ai-dialogue';
 import * as worldData from './data/world-data.json';
 
 const initRoom = new Room(-1, 'missingno', 'missingno');
@@ -103,7 +104,7 @@ if (terminalInput && terminalOutput) {
         UtilClear(terminalOutput);
     }
 
-    function processCommand(cmd: string) {
+    async function processCommand(cmd: string) {
         cmd = cmd.toLowerCase().trim();
         if (cmd === 'h') {
             printHelp();
@@ -132,7 +133,13 @@ if (terminalInput && terminalOutput) {
                 }
                 player.inCombat = false;
                 player.setTarget(null);
-                player.currentRoom.printRoom(print, clear);
+                const room = player.currentRoom;
+                room.printRoom(print, clear);
+
+                if (room.enemy && !room.enemy.isDead) {
+                    const enemyChat = await generateChat(room.enemy.name, '');
+                    print(`${room.enemy} says "${enemyChat}"`);
+                }
             } 
 
             postAction();
@@ -207,6 +214,12 @@ if (terminalInput && terminalOutput) {
             // }
         } else if (cmd === '') {
             player.currentRoom.printRoom(print, clear);
+        } else if (cmd.startsWith("say ")) {
+            let message = cmd.substring(cmd.indexOf(' ') + 1);
+            let enemy = player.currentRoom.enemy;
+            if (enemy && !enemy.isDead) {
+
+            }
         } else {
             print("Invalid command. Type 'h' for help.");
             player.currentRoom.printRoom(print, clear);

@@ -1,5 +1,8 @@
 import * as readline from 'readline';
 import * as process from 'process';
+import { generateChat } from './services/ai-dialogue';
+
+import { print as UtilPrint } from './Utils';
 
 import { Player, World, Room, Enemy } from './class';
 import * as worldData from './data/world-data.json';
@@ -74,11 +77,14 @@ const postAction = () => {
         }
     }
 };
+const print = (message: string) => {
+    UtilPrint(message);
+}
 
 
 function processCommand() {
 
-    rl.question('> ', (cmd) => {
+    rl.question('> ', async (cmd) => {
         cmd = cmd.toLowerCase();
 
         if (cmd === 'h') {
@@ -108,6 +114,13 @@ function processCommand() {
                 }
                 player.inCombat = false;
                 player.setTarget(null);
+                const room = player.currentRoom;
+                room.printRoom(print);
+
+                if (room.enemy && !room.enemy.isDead) {
+                    const enemyChat = await generateChat(room.enemy.name, '');
+                    console.log(`${room.enemy} says "${enemyChat}"`)
+                }
             } 
 
             postAction();

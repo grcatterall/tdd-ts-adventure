@@ -18,6 +18,7 @@
         "@types/mocha": "^9.1.1",
         "@types/sinon": "^10.0.12",
         "chai": "^4.3.6",
+        "dotenv": "^16.4.5",
         "gh-pages": "^6.1.1",
         "mocha": "^10.0.0",
         "sinon": "^14.0.0",
@@ -37,5 +38,8 @@
         "require": [
             "ts-node/register"
         ]
+    },
+    "dependencies": {
+        "cohere-ai": "^7.9.1"
     }
 }

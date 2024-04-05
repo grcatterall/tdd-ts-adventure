@@ -33,7 +33,7 @@ export class Room {
     print(this.getExitsString());
     print("");
     if (this.enemy) {
-      print(`Enemy - ${this.enemy.name} - ${this.enemy.isDead ? 'dead' : 'alive'}`);
+      print(`Enemy: ${this.enemy.name} - ${this.enemy.isDead ? 'dead' : 'alive'}`);
     }
     print("");
   }
