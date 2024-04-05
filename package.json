@@ -9,7 +9,7 @@
         "build": "tsc --build && webpack --config webpack.config.js --mode development && cp web/* dist",
         "dev": "tsc --watch && webpack --config webpack.config.js --mode development --watch",
         "predeploy": "npm run build",
-        "deploy": "gh-pages -d build"
+        "deploy": "gh-pages -d dist"
     },
     "author": "",
     "license": "ISC",
