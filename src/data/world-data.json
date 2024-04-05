@@ -48,7 +48,7 @@
     "enemies": [
         {
             "name": "Wizard",
-            "health": 50,
+            "health": 10,
             "damage": 1,
             "roomId": 1,
             "items": [

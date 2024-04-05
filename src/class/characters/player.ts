@@ -1,5 +1,6 @@
 import { Room, Item, Food } from '../index';
 import { Character, Enemy } from './index';
+import { print as ConsolePrint } from '../../Utils';
 
 export class Player extends Character {
     public currentRoom: Room;
@@ -17,7 +18,7 @@ export class Player extends Character {
         this.items = [];
     }
 
-    move(direction: string): boolean {
+    move(direction: string, print: ((message: string) => void) | typeof ConsolePrint = ConsolePrint): boolean {
 
         if (!this.currentRoom) {
             return false;
@@ -32,18 +33,18 @@ export class Player extends Character {
 
             return true;
         } else {
-            console.log("You cannot move in that direction");
+            print("You cannot move in that direction");
             return false;
         }
     }
 
-    printInventory() {
+    printInventory(print: ((message: string) => void) | typeof ConsolePrint = ConsolePrint) {
         if (this.items.length === 0) {
-            console.log(`${this.name} is not carrying anything.`);
+            print(`${this.name} is not carrying anything.`);
         } else {
-            console.log(`${this.name} is carrying:`);
+            print(`${this.name} is carrying:`);
             for (let i = 0 ; i < this.items.length ; i++) {
-                console.log(`  ${this.items[i].name}`);
+                print(`  ${this.items[i].name}`);
             }
         }
     }

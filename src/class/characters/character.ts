@@ -1,3 +1,5 @@
+import { print as ConsolePrint } from "../../Utils";
+
 export class Character {
     public damage: number;
     public name: string;
@@ -24,11 +26,11 @@ export class Character {
         }
     }
 
-    attack() {
+    attack(print: ((message: string) => void) | typeof ConsolePrint = ConsolePrint) {
         if (this.target) {
             this.target.takeDamage(this.damage);
         } else {
-            console.log('You have no one to attack');
+            print('You have no one to attack');
             this.inCombat = false;
         }
     }

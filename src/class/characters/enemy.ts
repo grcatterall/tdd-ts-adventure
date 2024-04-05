@@ -22,4 +22,11 @@ export class Enemy extends Character {
         this.room.addItems(this.heldItems);
         this.heldItems = [];
     }
+
+    listItems(): string {
+        const itemNames = this.heldItems.map((item) => {
+            return item.name;
+        })
+        return itemNames.join(', ');
+    }
 }

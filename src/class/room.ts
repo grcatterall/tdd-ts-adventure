@@ -1,4 +1,5 @@
 import { Item, Food, Enemy } from './index';
+import { print as ConsolePrint, clear as ConsoleClear } from '../Utils';
 
 export class Room {
   id: number;
@@ -16,22 +17,25 @@ export class Room {
     this.items = [];
   }
 
-  printRoom() {
-    console.clear();
-    console.log("");
-    console.log(this.name);
-    console.log("");
-    console.log(this.description);
-    console.log("");
+  printRoom(
+    print: ((message: string) => void) | typeof ConsolePrint = ConsolePrint,
+    clear: (() => void) | typeof ConsoleClear = ConsoleClear
+    ) {
+    clear();
+    print("");
+    print(this.name);
+    print("");
+    print(this.description);
+    print("");
     if (this.items.length > 0) {
-      console.log(`Items: ${this.items.map(item => item.name).join(", ")}`);
+      print(`Items: ${this.items.map(item => item.name).join(", ")}`);
     }
-    console.log(this.getExitsString());
-    console.log("");
+    print(this.getExitsString());
+    print("");
     if (this.enemy) {
-      console.log(`Enemy - ${this.enemy.name} - ${this.enemy.isDead ? 'dead' : 'alive'}`);
+      print(`Enemy - ${this.enemy.name} - ${this.enemy.isDead ? 'dead' : 'alive'}`);
     }
-    console.log("");
+    print("");
   }
 
   getExits(): string[] {
