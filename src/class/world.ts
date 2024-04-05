@@ -1,5 +1,6 @@
-import { Item, Room, Food } from './index';
+import { Item, Room, Food, Enemy } from './index';
 import { WorldData, RoomExits } from '../types/WorldData';
+import { ItemType } from '../types';
 
 
 export class World {
@@ -13,6 +14,7 @@ export class World {
 
         const roomList = worldData.rooms;
         const itemList = worldData.items;
+        const enemyList = worldData.enemies;
 
         // Instantiate new room objects
         // Get name, id and description from room data
@@ -40,18 +42,39 @@ export class World {
             }
         });
 
-        
         itemList.map((item) => {
-            let newItem;
-            if (item.isFood) {
-                newItem = new Food(item.name, item.description);
-            } else {
-                newItem = new Item(item.name, item.description);
+            if (item.room) {
+                this.rooms[item.room].addItems(this.itemMapper([item]));
             }
-
-            this.rooms[item.room].items.push(newItem);
         });
 
-        // Your code here
+        if (enemyList) {
+            enemyList.map((enemy) => {
+                const enemyCharacter = new Enemy(
+                    enemy.name,
+                    enemy.health,
+                    enemy.damage,
+                    this.itemMapper(enemy.items),
+                    this.rooms[enemy.roomId]
+                );
+
+                this.rooms[enemy.roomId].addEnemy(enemyCharacter);
+            });
+        }
     }
+
+    itemMapper(items: ItemType[]): Item[] {
+        const mappedItems = items.map((item) => {
+            let newItem;
+            if (item.isFood) {
+              newItem = new Food(item.name, item.description, item.health || 0);
+            } else {
+              newItem = new Item(item.name, item.description);
+            }
+
+            return newItem;
+        });
+
+        return mappedItems;
+    } 
 }

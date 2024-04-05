@@ -41,7 +41,24 @@
             "name": "sandwich",
             "description": "A tasty looking sandwich",
             "room": 2,
-            "isFood": true
+            "isFood": true,
+            "health": 5
+        }
+    ],
+    "enemies": [
+        {
+            "name": "Wizard",
+            "health": 50,
+            "damage": 1,
+            "roomId": 1,
+            "items": [
+                {
+                    "name": "bread loaf",
+                    "description": "Fresh from the bakery",
+                    "isFood": true,
+                    "health": 4
+                }
+            ]
         }
     ]
 }
