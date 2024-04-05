@@ -31,10 +31,6 @@ if (terminalInput && terminalOutput) {
         print("");
     }
 
-    window.addEventListener('resize', () => {
-        terminal.style.height = `${window.innerHeight * 0.8}px`;
-    });
-
     function startGame() {
         clear();
         print("Welcome!\n");
