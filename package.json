@@ -6,7 +6,7 @@
     "scripts": {
         "test": "mocha",
         "start": "ts-node src/game.ts",
-        "build": "tsc --build && webpack --config webpack.config.js --mode development && cp web/* dist",
+        "build": "tsc --build && webpack --config webpack.config.js --mode development && cp -R web/* dist",
         "dev": "tsc --watch && webpack --config webpack.config.js --mode development --watch",
         "predeploy": "npm run build",
         "deploy": "gh-pages -d dist"
