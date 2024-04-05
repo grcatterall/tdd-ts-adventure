@@ -11,6 +11,7 @@ const terminalInput = document.getElementById('terminalInput') as HTMLInputEleme
 const modal = document.getElementById('modal') as HTMLDivElement;
 const nameInput = document.getElementById('nameInput') as HTMLInputElement;
 const submitButton = document.getElementById('submitButton') as HTMLButtonElement;
+const modalForm = document.getElementById('modal-name-form') as HTMLFormElement;
 
 if (terminalInput && terminalOutput) {
     terminalOutput.innerHTML = 'Welcome!\n';
@@ -37,17 +38,16 @@ if (terminalInput && terminalOutput) {
         terminalInput.disabled = true;
         modal.style.display = 'block';
 
-        nameInput.autofocus = true;
+        nameInput.focus();
 
-        submitButton.addEventListener('click', () => {
+        modalForm.addEventListener('submit', () => {
             const playerName = nameInput.value.trim();
             if (playerName) {
                 print(`Hello, ${playerName}!<br>`);
                 modal.style.display = 'none';
-                nameInput.autofocus = true;
 
                 terminalInput.disabled = false;
-                terminalInput.autofocus = true;
+                terminalInput.focus()
                 // Create the world and player
                 const world = new World();
                 world.loadWorld(worldData);
@@ -221,6 +221,7 @@ if (terminalInput && terminalOutput) {
 
             processCommand(terminalInput.value);
         }
+        terminalInput.focus();
     });
 
     startGame();
