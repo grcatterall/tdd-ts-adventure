@@ -7,7 +7,9 @@
         "test": "mocha",
         "start": "ts-node src/game.ts",
         "build": "tsc --build && webpack --config webpack.config.js --mode development && cp web/* dist",
-        "dev": "tsc --watch && webpack --config webpack.config.js --mode development --watch"
+        "dev": "tsc --watch && webpack --config webpack.config.js --mode development --watch",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build"
     },
     "author": "",
     "license": "ISC",
@@ -16,6 +18,7 @@
         "@types/mocha": "^9.1.1",
         "@types/sinon": "^10.0.12",
         "chai": "^4.3.6",
+        "gh-pages": "^6.1.1",
         "mocha": "^10.0.0",
         "sinon": "^14.0.0",
         "ts-node": "^10.9.2",
