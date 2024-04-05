@@ -8,9 +8,9 @@ const player = new Player('', 10, 3, initRoom);
 const terminalOutput = document.getElementById('terminalOutput') as HTMLDivElement;
 const terminalInput = document.getElementById('terminalInput') as HTMLInputElement;
 
+const terminal = document.getElementById('terminal') as HTMLDivElement; 
 const modal = document.getElementById('modal') as HTMLDivElement;
 const nameInput = document.getElementById('nameInput') as HTMLInputElement;
-const submitButton = document.getElementById('submitButton') as HTMLButtonElement;
 const modalForm = document.getElementById('modal-name-form') as HTMLFormElement;
 
 if (terminalInput && terminalOutput) {
@@ -30,6 +30,10 @@ if (terminalInput && terminalOutput) {
         print("  Type 'n', 's', 'e', 'w' to move");
         print("");
     }
+
+    window.addEventListener('resize', () => {
+        terminal.style.height = `${window.innerHeight * 0.8}px`;
+    });
 
     function startGame() {
         clear();
