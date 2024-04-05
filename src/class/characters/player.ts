@@ -1,12 +1,17 @@
-import { Room, Item } from './index';
-import * as worldData from '../data/world-data.json'
+import { Room, Item } from '../index';
+import { Character } from './index';
 
-export class Player {
-    public name?: string;
+export class Player extends Character {
     public currentRoom?: Room;
     public items: Item[];
 
-    constructor(name?: string, startingRoom?: Room) {
+    constructor(
+        name: string, 
+        health: number,
+        damage: number,
+        startingRoom?: Room
+    ) {
+        super(health, damage, name);
         this.name = name;
         this.currentRoom = startingRoom;
         this.items = [];
@@ -20,7 +25,6 @@ export class Player {
 
         const nextRoom = this.currentRoom.getRoomInDirection(direction);
 
-        // If the next room is valid, set the player to be in that room
         if (nextRoom) {
             this.currentRoom = nextRoom;
 

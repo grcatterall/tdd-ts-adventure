@@ -55,7 +55,7 @@ describe ('Food', function () {
   it('A food item can be eaten by a player', function () {
     const food = new Food("sandwich", "a delicious sandwich");
     const room = new Room(1, "Test Room", "A test room");
-    const player = new Player("player", room);
+    const player = new Player("player", 10, 5, room);
 
     player.items.push(food);
 
@@ -71,7 +71,7 @@ describe ('Food', function () {
   it('An item cannot be eaten by a player if not a food item', function () {
     const item = new Item("rock", "just a simple rock");
     const room = new Room(1, "Test Room", "A test room");
-    const player = new Player("player", room);
+    const player = new Player("player", 10, 5,  room);
 
     player.items.push(item);
 
