@@ -44,7 +44,8 @@ if (terminalInput && terminalOutput) {
 
         nameInput.focus();
 
-        modalForm.addEventListener('submit', () => {
+        modalForm.addEventListener('submit', (event) => {
+            event.preventDefault();
             const playerName = nameInput.value.trim();
             if (playerName) {
                 print(`Hello, ${playerName}!<br>`);
