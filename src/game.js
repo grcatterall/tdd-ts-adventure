@@ -80,10 +80,12 @@ const postAction = () => {
                 console.log("");
             }
             else {
+                const items = enemy.listItems();
                 enemy.dropItems();
                 player.currentRoom.printRoom();
                 player.setTarget(null);
                 player.inCombat = false;
+                console.log(`You defeated ${enemy.name}, they have dropped their spoils: ${items}`);
             }
         }
     }

@@ -59,6 +59,20 @@
                     "health": 4
                 }
             ]
+        },
+        {
+            "name": "Marcus, the giant",
+            "health": 5,
+            "damage": 1,
+            "roomId": 3,
+            "items": [
+                {
+                    "name": "A keefy cig",
+                    "description": "The beast had ran out of weed",
+                    "isFood": true,
+                    "health": -2
+                }
+            ]
         }
     ]
 }
